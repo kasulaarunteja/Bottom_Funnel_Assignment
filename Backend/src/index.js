@@ -4,6 +4,7 @@ const cors = require('cors')
 
 require('dotenv').config()
 const Task = require("./cotrollers/Task.controller");
+const {register, login} = require("./cotrollers/auth.controller");
 
 app.use(
     cors({
@@ -15,7 +16,10 @@ app.use(
 
 app.use(express.json())
 require('dotenv').config()
+app.post('/register', register)
+app.post('/login', login)
 app.use('/', Task);
+
 
 app.get("/", (req, res) => {
     return res.send("hello world")
