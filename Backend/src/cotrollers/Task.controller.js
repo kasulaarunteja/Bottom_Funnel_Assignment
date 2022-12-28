@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post('/task', async (req, res) => {
   try {
-    res.set('Access-Control-Allow-Origin', 'http://localhost:8080')
+   ///*** */ res.set('Access-Control-Allow-Origin', 'http://localhost:8080')
     const task = await Task.create(req.body)
     res.send(task)
   } catch (error) {

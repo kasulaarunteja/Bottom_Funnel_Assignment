@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const bcryptjs = require('bcryptjs')
-
 const userSchema = new mongoose.Schema(
   {
     name: { type: String },
@@ -9,7 +8,7 @@ const userSchema = new mongoose.Schema(
   },
   {
     versionKey: false,
-    timeseries: true,
+    timestamps: true,
   },
 )
 
@@ -20,7 +19,7 @@ userSchema.pre('save', function (next) {
   return next()
 })
 
-userSchema.method.checkPassword = function (password) {
+userSchema.methods.checkPassword = function (password) {
   return bcryptjs.compareSync(password, this.password)
 }
 
